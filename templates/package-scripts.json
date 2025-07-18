@@ -1,0 +1,6 @@
+{
+  "docs": "cd docs/generator && node docs-generator.js",
+  "docs:watch": "cd docs/generator && node docs-generator.js --watch",
+  "docs:dark": "cd docs/generator && node docs-generator.js --theme dark",
+  "docs:github": "cd docs/generator && node docs-generator.js --theme github"
+}

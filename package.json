@@ -1,0 +1,60 @@
+{
+  "name": "markdown-docs-generator",
+  "version": "1.0.0",
+  "description": "A CLI tool to generate beautiful HTML documentation from markdown files with theme support",
+  "main": "lib/index.js",
+  "bin": {
+    "markdown-docs-generator": "bin/markdown-docs-generator.js",
+    "mdg": "bin/markdown-docs-generator.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "build": "echo \"Build process (if needed)\"",
+    "dev": "node bin/markdown-docs-generator.js"
+  },
+  "keywords": [
+    "markdown",
+    "documentation",
+    "generator",
+    "cli",
+    "html",
+    "themes",
+    "docs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/markdown-docs-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/markdown-docs-generator/issues"
+  },
+  "homepage": "https://github.com/your-username/markdown-docs-generator#readme",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "inquirer": "^12.7.0",
+    "fs-extra": "^11.0.0",
+    "handlebars": "^4.7.8",
+    "chalk": "^4.1.2",
+    "chokidar": "^4.0.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^16.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "preferGlobal": true,
+  "files": [
+    "bin/",
+    "lib/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ]
+}
