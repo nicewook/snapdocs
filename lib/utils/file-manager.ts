@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import * as Handlebars from 'handlebars';
 
 export interface FileManagerOptions {
@@ -32,7 +32,8 @@ export class FileManager {
 
   constructor(options: FileManagerOptions = {}) {
     this.options = options;
-    this.templatesPath = path.join(__dirname, '../../templates');
+    // dist/lib/utils에서 templates로 가려면 ../../../templates
+    this.templatesPath = path.join(__dirname, '../../../templates');
   }
 
   /**

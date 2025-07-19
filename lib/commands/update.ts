@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { exec } from 'child_process';
 import { promisify } from 'util';

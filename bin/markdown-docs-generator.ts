@@ -4,7 +4,7 @@ import { program } from 'commander';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 // Import commands
 import { initCommand } from '../lib/commands/init';
