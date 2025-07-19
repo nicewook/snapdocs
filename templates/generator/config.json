@@ -5,7 +5,6 @@
   "outputFile": "index.html",
   "docsDir": "docs",
   "excludeFiles": ["temp.md", "draft.md", "*temp*", "*draft*", "*.bak"],
-  "categoryOrder": ["overview", "technical", "analysis", "planning", "misc"],
   "defaultCategory": "documentation",
   "watchFiles": [
     "README.md",

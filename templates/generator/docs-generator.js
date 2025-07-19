@@ -101,9 +101,9 @@ class DocsGenerator {
   scanMarkdownFiles() {
     const files = [];
     
-    // README.md 포함
+    // README.md 포함 (제외 규칙 확인)
     const readmePath = path.join(this.projectRoot, 'README.md');
-    if (fs.existsSync(readmePath)) {
+    if (fs.existsSync(readmePath) && !this.isExcluded('README.md')) {
       const content = fs.readFileSync(readmePath, 'utf-8');
       const { data, content: markdownContent } = matter(content);
       files.push({
@@ -308,16 +308,33 @@ ${cssContent}
   watch() {
     console.log('🔍 파일 변경 감시 시작...');
     
-    const watchPaths = [
-      path.join(this.projectRoot, 'README.md'),
-      path.join(this.docsDir, '**/*.md')
+    // Use watchFiles from config, with fallback to default paths
+    const configWatchFiles = this.config.watchFiles || [
+      'README.md',
+      'CLAUDE.md',
+      'docs/**/*.md'
     ];
+    
+    const watchPaths = configWatchFiles.map(watchPath => {
+      // If path is already absolute, use as-is, otherwise resolve relative to project root
+      return path.isAbsolute(watchPath) ? watchPath : path.join(this.projectRoot, watchPath);
+    });
     
     console.log('📁 감시 중인 경로들:');
     watchPaths.forEach(p => console.log(`   - ${p}`));
     
+    // Create ignore patterns that work with chokidar and support wildcards
+    const ignorePatterns = this.excludeFiles.map(pattern => {
+      // Support wildcard patterns
+      if (pattern.includes('*')) {
+        return pattern;
+      }
+      // For exact filenames, create patterns for different possible locations
+      return `**/${pattern}`;
+    });
+
     const watcher = chokidar.watch(watchPaths, {
-      ignored: this.excludeFiles.map(f => path.join(this.docsDir, f)),
+      ignored: ignorePatterns,
       persistent: true
     });
 
