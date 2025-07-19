@@ -2,16 +2,20 @@
   "name": "markdown-docs-generator",
   "version": "1.0.0",
   "description": "A CLI tool to generate beautiful HTML documentation from markdown files with theme support",
-  "main": "lib/index.js",
+  "main": "dist/lib/index.js",
   "bin": {
-    "markdown-docs-generator": "bin/markdown-docs-generator.js",
-    "mdg": "bin/markdown-docs-generator.js"
+    "markdown-docs-generator": "dist/bin/markdown-docs-generator.js",
+    "mdg": "dist/bin/markdown-docs-generator.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "npm run build",
-    "build": "echo \"Build process (if needed)\"",
-    "dev": "node bin/markdown-docs-generator.js"
+    "prepublishOnly": "npm run clean && npm run build",
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "dev": "npm run build && node dist/bin/markdown-docs-generator.js",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npm run build"
   },
   "keywords": [
     "markdown",
@@ -33,26 +37,30 @@
   },
   "homepage": "https://github.com/USERNAME/markdown-docs-generator#readme",
   "dependencies": {
-    "commander": "^14.0.0",
-    "inquirer": "^8.2.6",
-    "fs-extra": "^11.0.0",
-    "handlebars": "^4.7.8",
     "chalk": "^4.1.2",
     "chokidar": "^4.0.3",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.0.0",
     "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.8",
+    "inquirer": "^8.2.6",
     "marked": "^16.0.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/handlebars": "^4.0.40",
+    "@types/inquirer": "^9.0.8",
+    "@types/node": "^24.0.15",
     "eslint": "^8.0.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "preferGlobal": true,
   "files": [
-    "bin/",
-    "lib/",
+    "dist/",
     "templates/",
     "README.md",
     "LICENSE"
