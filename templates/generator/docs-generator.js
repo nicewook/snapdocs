@@ -1,48 +1,13 @@
 #!/usr/bin/env node
 
-import * as fs from 'fs';
-import * as path from 'path';
-import * as chokidar from 'chokidar';
-import { marked } from 'marked';
-import matter from 'gray-matter';
+const fs = require('fs');
+const path = require('path');
+const chokidar = require('chokidar');
+const { marked } = require('marked');
+const matter = require('gray-matter');
 
-interface DocsGeneratorOptions {
-  theme?: string;
-}
-
-interface ConfigData {
-  docsDir?: string;
-  excludeFiles?: string[];
-  outputFile?: string;
-  theme?: string;
-  defaultCategory?: string;
-  title?: string;
-  subtitle?: string;
-  [key: string]: any;
-}
-
-interface FileData {
-  path: string;
-  title: string;
-  category: string;
-  date: string;
-  content: string;
-}
-
-interface Categories {
-  [category: string]: FileData[];
-}
-
-export class DocsGenerator {
-  private projectRoot: string;
-  private config: ConfigData;
-  private docsDir: string;
-  private excludeFiles: string[];
-  private outputFile: string;
-  private theme: string;
-  private stylesDir: string;
-
-  constructor(options: DocsGeneratorOptions = {}) {
+class DocsGenerator {
+  constructor(options = {}) {
     // 프로젝트 루트 디렉터리 찾기
     this.projectRoot = this.findProjectRoot();
     
@@ -57,7 +22,7 @@ export class DocsGenerator {
   }
 
   // 프로젝트 루트 디렉터리 찾기
-  private findProjectRoot(): string {
+  findProjectRoot() {
     let currentDir = __dirname;
     while (currentDir !== path.dirname(currentDir)) {
       if (fs.existsSync(path.join(currentDir, 'package.json'))) {
@@ -69,12 +34,12 @@ export class DocsGenerator {
   }
 
   // config.json 로드
-  private loadConfig(): ConfigData {
+  loadConfig() {
     const configPath = path.join(__dirname, 'config.json');
     if (fs.existsSync(configPath)) {
       try {
         return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-      } catch (error: any) {
+      } catch (error) {
         console.warn('⚠️  config.json 파싱 오류, 기본값 사용:', error.message);
         return {};
       }
@@ -83,7 +48,7 @@ export class DocsGenerator {
   }
 
   // 파일 제외 여부 확인 (패턴 매칭 지원)
-  private isExcluded(filename: string): boolean {
+  isExcluded(filename) {
     return this.excludeFiles.some(pattern => {
       // 와일드카드 패턴 지원
       if (pattern.includes('*')) {
@@ -96,7 +61,7 @@ export class DocsGenerator {
   }
 
   // CSS 파일 로드
-  private loadCSS(): string {
+  loadCSS() {
     const cssFile = path.join(this.stylesDir, `${this.theme}.css`);
     if (fs.existsSync(cssFile)) {
       return fs.readFileSync(cssFile, 'utf-8');
@@ -110,8 +75,8 @@ export class DocsGenerator {
   }
 
   // 마크다운 파일들을 스캔하고 메타데이터 추출
-  private scanMarkdownFiles(): FileData[] {
-    const files: FileData[] = [];
+  scanMarkdownFiles() {
+    const files = [];
     
     // README.md 포함
     const readmePath = path.join(this.projectRoot, 'README.md');
@@ -152,8 +117,8 @@ export class DocsGenerator {
   }
 
   // HTML 생성
-  private generateHTML(files: FileData[]): string {
-    const categories: Categories = {};
+  generateHTML(files) {
+    const categories = {};
     
     // 카테고리별로 그룹화
     files.forEach(file => {
@@ -214,7 +179,7 @@ export class DocsGenerator {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로젝트 문서</title>
+    <title>${this.config.title || '프로젝트 문서'}</title>
     <style>
 ${cssContent}
     </style>
@@ -223,8 +188,8 @@ ${cssContent}
     <div class="container">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h1>📚 문서</h1>
-                <div class="subtitle">프로젝트 문서</div>
+                <h1>📚 ${this.config.title || '문서'}</h1>
+                <div class="subtitle">${this.config.subtitle || '프로젝트 문서'}</div>
             </div>
             ${sidebarHTML}
         </div>
@@ -307,7 +272,7 @@ ${cssContent}
   }
 
   // 문서 생성
-  generate(): void {
+  generate() {
     const files = this.scanMarkdownFiles();
     const html = this.generateHTML(files);
     
@@ -317,7 +282,7 @@ ${cssContent}
   }
 
   // 파일 감시 시작
-  watch(): void {
+  watch() {
     console.log('🔍 파일 변경 감시 시작...');
     
     const watchPaths = [
@@ -383,4 +348,4 @@ if (require.main === module) {
   }
 }
 
-export default DocsGenerator;
+module.exports = DocsGenerator;
