@@ -1,6 +1,6 @@
 # 배포 가이드 (Deployment Guide)
 
-이 문서는 `markdown-docs-generator` 패키지를 npm에 배포하는 과정을 설명합니다.
+이 문서는 `snapdocs` 패키지를 npm에 배포하는 과정을 설명합니다.
 
 ## 사전 준비
 
@@ -8,10 +8,10 @@
 
 ```bash
 # GitHub에서 새 저장소 생성 후
-git remote add origin https://github.com/YOUR_USERNAME/markdown-docs-generator.git
+git remote add origin https://github.com/nicewook/snapdocs.git
 
 # package.json, README.md, bin 파일의 URL 업데이트
-# "USERNAME"을 실제 GitHub 사용자명으로 변경
+# "nicewook"을 실제 GitHub 사용자명으로 변경
 ```
 
 ### 2. npm 계정 준비
@@ -30,16 +30,16 @@ npm whoami
 
 ```json
 {
-  "name": "markdown-docs-generator",
+  "name": "snapdocs",
   "author": "Your Name <your.email@example.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_USERNAME/markdown-docs-generator.git"
+    "url": "git+https://github.com/nicewook/snapdocs.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/markdown-docs-generator/issues"
+    "url": "https://github.com/nicewook/snapdocs/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/markdown-docs-generator#readme"
+  "homepage": "https://github.com/nicewook/snapdocs#readme"
 }
 ```
 
@@ -91,7 +91,7 @@ git push origin main --tags
 npm publish
 
 # 성공 메시지 확인:
-# + markdown-docs-generator@1.0.0
+# + snapdocs@1.0.0
 ```
 
 ## 배포 후 확인
@@ -100,23 +100,23 @@ npm publish
 
 ```bash
 # 전역 설치 테스트
-npm install -g markdown-docs-generator
+npm install -g snapdocs
 
 # 버전 확인
-markdown-docs-generator --version
+snapdocs --version
 
 # 기능 테스트
 mkdir test-project
 cd test-project
-markdown-docs-generator setup
+snapdocs setup
 ```
 
 ### 2. npx 사용 테스트
 
 ```bash
 # npx로 직접 사용 테스트
-npx markdown-docs-generator --help
-npx markdown-docs-generator setup --theme dark
+npx snapdocs --help
+npx snapdocs setup --theme dark
 ```
 
 ## 업데이트 배포
@@ -169,7 +169,7 @@ npm publish
 
 ```bash
 # 패키지명이 이미 존재하는 경우
-npm search markdown-docs-generator
+npm search snapdocs
 
 # 다른 이름으로 변경
 # package.json의 "name" 필드 수정
@@ -190,7 +190,7 @@ npm profile get
 
 ```bash
 # 현재 npm 버전 확인
-npm view markdown-docs-generator versions --json
+npm view snapdocs versions --json
 
 # 적절한 버전으로 업데이트
 npm version <new-version>

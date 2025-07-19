@@ -269,7 +269,7 @@ export async function updateCommand(options: UpdateCommandOptions = {}): Promise
   
   // 12. 버전 정보 (향후 구현)
   console.log(chalk.gray('\n📌 현재 버전: 1.0.0'));
-  console.log(chalk.gray('💡 최신 업데이트 정보: https://github.com/your-username/markdown-docs-generator'));
+  console.log(chalk.gray('💡 최신 업데이트 정보: https://github.com/nicewook/snapdocs'));
 }
 
 export default updateCommand;

@@ -1,10 +1,10 @@
 {
-  "name": "markdown-docs-generator",
+  "name": "snapdocs",
   "version": "1.0.0",
   "description": "A CLI tool to generate beautiful HTML documentation from markdown files with theme support",
   "main": "dist/lib/index.js",
   "bin": {
-    "markdown-docs-generator": "dist/bin/markdown-docs-generator.js",
+    "snapdocs": "dist/bin/markdown-docs-generator.js",
     "mdg": "dist/bin/markdown-docs-generator.js"
   },
   "scripts": {
@@ -30,12 +30,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/USERNAME/markdown-docs-generator.git"
+    "url": "git+https://github.com/nicewook/snapdocs.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/markdown-docs-generator/issues"
+    "url": "https://github.com/nicewook/snapdocs/issues"
   },
-  "homepage": "https://github.com/USERNAME/markdown-docs-generator#readme",
+  "homepage": "https://github.com/nicewook/snapdocs#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "chokidar": "^4.0.3",

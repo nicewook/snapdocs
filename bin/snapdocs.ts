@@ -17,7 +17,7 @@ const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
 
 // Configure CLI
 program
-  .name('markdown-docs-generator')
+  .name('snapdocs')
   .description('Generate beautiful HTML documentation from markdown files')
   .version(packageJson.version);
 
@@ -85,7 +85,7 @@ program
     console.log('Generate beautiful HTML documentation from markdown files with theme support.\n');
     
     console.log(chalk.bold('Usage:'));
-    console.log('  npx markdown-docs-generator <command> [options]\n');
+    console.log('  npx snapdocs <command> [options]\n');
     
     console.log(chalk.bold('Commands:'));
     console.log('  init     Initialize new project with docs system');
@@ -102,18 +102,18 @@ program
     console.log('  -V, --version        Show version\n');
     
     console.log(chalk.bold('Examples:'));
-    console.log('  npx markdown-docs-generator setup');
-    console.log('  npx markdown-docs-generator setup --theme dark');
-    console.log('  npx markdown-docs-generator init --force');
-    console.log('  npx markdown-docs-generator update --backup\n');
+    console.log('  npx snapdocs setup');
+    console.log('  npx snapdocs setup --theme dark');
+    console.log('  npx snapdocs init --force');
+    console.log('  npx snapdocs update --backup\n');
     
-    console.log(chalk.gray('For more information, visit: https://github.com/USERNAME/markdown-docs-generator'));
+    console.log(chalk.gray('For more information, visit: https://github.com/nicewook/snapdocs'));
   });
 
 // Handle unknown commands
 program.on('command:*', (operands) => {
   console.error(chalk.red(`❌ Unknown command: ${operands[0]}`));
-  console.log(chalk.yellow('💡 Run "markdown-docs-generator help" for available commands'));
+  console.log(chalk.yellow('💡 Run "snapdocs help" for available commands'));
   process.exit(1);
 });
 

@@ -1,4 +1,4 @@
-# Markdown Documentation Generator
+# SnapDocs
 
 📚 A powerful CLI tool to generate beautiful HTML documentation from markdown files with theme support.
 
@@ -17,10 +17,10 @@
 
 ```bash
 # Use directly with npx (recommended)
-npx markdown-docs-generator setup
+npx snapdocs setup
 
 # Or install globally
-npm install -g markdown-docs-generator
+npm install -g snapdocs
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ npm install -g markdown-docs-generator
 cd your-project
 
 # Setup documentation system
-npx markdown-docs-generator setup
+npx snapdocs setup
 
 # Generate documentation
 npm run docs
@@ -49,7 +49,7 @@ mkdir my-docs-project
 cd my-docs-project
 
 # Initialize with documentation system
-npx markdown-docs-generator init
+npx snapdocs init
 
 # Start developing
 npm run docs:watch
@@ -79,16 +79,16 @@ npm run docs:watch
 
 ```bash
 # Setup with dark theme
-npx markdown-docs-generator setup --theme dark
+npx snapdocs setup --theme dark
 
 # Force setup (overwrite existing files)
-npx markdown-docs-generator setup --force
+npx snapdocs setup --force
 
 # Update with backup
-npx markdown-docs-generator update --backup
+npx snapdocs update --backup
 
 # Initialize new project
-npx markdown-docs-generator init --theme github
+npx snapdocs init --theme github
 ```
 
 ## Generated Scripts
@@ -240,7 +240,7 @@ Use glob patterns to exclude files:
 ### Programmatic Usage
 
 ```javascript
-const { setup } = require('markdown-docs-generator');
+const { setup } = require('snapdocs');
 
 await setup({
   theme: 'dark',
@@ -263,7 +263,7 @@ await setup({
 Enable verbose logging:
 
 ```bash
-DEBUG=markdown-docs-generator npm run docs
+DEBUG=snapdocs npm run docs
 ```
 
 ## Requirements
@@ -307,10 +307,10 @@ MIT License - see LICENSE file for details.
 
 ## Support
 
-- 🐛 [Report bugs](https://github.com/USERNAME/markdown-docs-generator/issues)
-- 💡 [Request features](https://github.com/USERNAME/markdown-docs-generator/issues)
-- 📖 [Documentation](https://github.com/USERNAME/markdown-docs-generator)
-- 💬 [Discussions](https://github.com/USERNAME/markdown-docs-generator/discussions)
+- 🐛 [Report bugs](https://github.com/nicewook/snapdocs/issues)
+- 💡 [Request features](https://github.com/nicewook/snapdocs/issues)
+- 📖 [Documentation](https://github.com/nicewook/snapdocs)
+- 💬 [Discussions](https://github.com/nicewook/snapdocs/discussions)
 
 ---
 
