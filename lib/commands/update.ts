@@ -48,6 +48,9 @@ export async function updateCommand(options: UpdateCommandOptions = {}): Promise
   console.log(chalk.green(`📁 프로젝트 루트: ${projectRoot}`));
 
   const packageModifier = new PackageModifier(projectRoot);
+  
+  // 동적으로 테마 선택지 가져오기
+  const themeChoices = fileManager.getThemeChoices();
   const docsDir = path.join(projectRoot, 'docs');
   const generatorDir = path.join(docsDir, 'generator');
 
@@ -108,11 +111,7 @@ export async function updateCommand(options: UpdateCommandOptions = {}): Promise
           type: 'list',
           name: 'theme',
           message: '기본 테마:',
-          choices: [
-            { name: '기본 테마 (밝은 색상)', value: 'default' },
-            { name: '다크 테마 (어두운 색상)', value: 'dark' },
-            { name: 'GitHub 테마 (GitHub 스타일)', value: 'github' }
-          ],
+          choices: themeChoices,
           default: currentConfig.theme || 'default'
         }
       ]);

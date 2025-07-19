@@ -73,6 +73,12 @@ export async function initCommand(options: InitCommandOptions = {}): Promise<voi
     }
   }
 
+  const fileManager = new FileManager();
+  const packageModifier = new PackageModifier(currentDir);
+  
+  // 동적으로 테마 선택지 가져오기
+  const themeChoices = fileManager.getThemeChoices();
+
   // 2. 프로젝트 설정 입력
   const answers = await inquirer.prompt<ProjectConfig>([
     {
@@ -109,11 +115,7 @@ export async function initCommand(options: InitCommandOptions = {}): Promise<voi
       type: 'list',
       name: 'theme',
       message: '기본 테마:',
-      choices: [
-        { name: '기본 테마 (밝은 색상)', value: 'default' },
-        { name: '다크 테마 (어두운 색상)', value: 'dark' },
-        { name: 'GitHub 테마 (GitHub 스타일)', value: 'github' }
-      ],
+      choices: themeChoices,
       default: theme
     },
     {
@@ -132,9 +134,6 @@ export async function initCommand(options: InitCommandOptions = {}): Promise<voi
   ]);
 
   const config: ProjectConfig = { ...answers, theme: answers.theme };
-
-  const fileManager = new FileManager();
-  const packageModifier = new PackageModifier(currentDir);
 
   // 3. package.json 생성
   console.log(chalk.blue('📦 package.json 생성 중...'));

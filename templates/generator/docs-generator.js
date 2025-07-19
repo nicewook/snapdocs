@@ -74,6 +74,29 @@ class DocsGenerator {
     throw new Error('CSS 파일을 찾을 수 없습니다.');
   }
 
+  // 사용 가능한 테마들을 동적으로 스캔
+  getAvailableThemes() {
+    if (fs.existsSync(this.stylesDir)) {
+      return fs.readdirSync(this.stylesDir)
+        .filter(file => file.endsWith('.css'))
+        .map(file => file.replace('.css', ''))
+        .sort();
+    }
+    return ['default']; // fallback
+  }
+
+  // 테마명을 사용자 친화적으로 포맷팅
+  formatThemeName(themeName) {
+    const nameMap = {
+      'default': '기본 테마 (밝은 색상)',
+      'dark': '다크 테마 (어두운 색상)',
+      'github': 'GitHub 테마 (GitHub 스타일)'
+    };
+    
+    // 매핑된 이름이 있으면 사용, 없으면 첫 글자 대문자화
+    return nameMap[themeName] || (themeName.charAt(0).toUpperCase() + themeName.slice(1) + ' 테마');
+  }
+
   // 마크다운 파일들을 스캔하고 메타데이터 추출
   scanMarkdownFiles() {
     const files = [];
