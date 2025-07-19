@@ -103,7 +103,7 @@ program
     console.log('  npx markdown-docs-generator init --force');
     console.log('  npx markdown-docs-generator update --backup\n');
     
-    console.log(chalk.gray('For more information, visit: https://github.com/your-username/markdown-docs-generator'));
+    console.log(chalk.gray('For more information, visit: https://github.com/USERNAME/markdown-docs-generator'));
   });
 
 // Handle unknown commands

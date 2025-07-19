@@ -307,10 +307,10 @@ MIT License - see LICENSE file for details.
 
 ## Support
 
-- 🐛 [Report bugs](https://github.com/your-username/markdown-docs-generator/issues)
-- 💡 [Request features](https://github.com/your-username/markdown-docs-generator/issues)
-- 📖 [Documentation](https://github.com/your-username/markdown-docs-generator)
-- 💬 [Discussions](https://github.com/your-username/markdown-docs-generator/discussions)
+- 🐛 [Report bugs](https://github.com/USERNAME/markdown-docs-generator/issues)
+- 💡 [Request features](https://github.com/USERNAME/markdown-docs-generator/issues)
+- 📖 [Documentation](https://github.com/USERNAME/markdown-docs-generator)
+- 💬 [Discussions](https://github.com/USERNAME/markdown-docs-generator/discussions)
 
 ---
 

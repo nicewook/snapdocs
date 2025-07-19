@@ -22,19 +22,19 @@
     "themes",
     "docs"
   ],
-  "author": "",
+  "author": "Your Name <your.email@example.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/markdown-docs-generator.git"
+    "url": "git+https://github.com/USERNAME/markdown-docs-generator.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/markdown-docs-generator/issues"
+    "url": "https://github.com/USERNAME/markdown-docs-generator/issues"
   },
-  "homepage": "https://github.com/your-username/markdown-docs-generator#readme",
+  "homepage": "https://github.com/USERNAME/markdown-docs-generator#readme",
   "dependencies": {
     "commander": "^14.0.0",
-    "inquirer": "^12.7.0",
+    "inquirer": "^8.2.6",
     "fs-extra": "^11.0.0",
     "handlebars": "^4.7.8",
     "chalk": "^4.1.2",
