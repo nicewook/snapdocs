@@ -138,4 +138,7 @@ ehthumbs.db
 Thumbs.db
 
 # Generated documentation file
-index.html temp-test/
+index.html
+
+# Temporary test directory
+temp-test/
