@@ -4,8 +4,8 @@
   "description": "A CLI tool to generate beautiful HTML documentation from markdown files with theme support",
   "main": "dist/lib/index.js",
   "bin": {
-    "snapdocs": "dist/bin/markdown-docs-generator.js",
-    "mdg": "dist/bin/markdown-docs-generator.js"
+    "snapdocs": "dist/bin/snapdocs.js",
+    "mdg": "dist/bin/snapdocs.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
     "prepublishOnly": "npm run clean && npm run build",
     "build": "tsc",
     "clean": "rm -rf dist",
-    "dev": "npm run build && node dist/bin/markdown-docs-generator.js",
+    "dev": "npm run build && node dist/bin/snapdocs.js",
     "typecheck": "tsc --noEmit",
     "prepack": "npm run build"
   },

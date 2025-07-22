@@ -22,7 +22,7 @@ npm test               # No tests configured yet
 ### CLI Usage
 ```bash
 # Use the built CLI directly
-node dist/bin/markdown-docs-generator.js
+node dist/bin/snapdocs.js
 
 # Or install and use globally
 npm install -g .
@@ -35,7 +35,7 @@ mdg --help             # Short alias
 SnapDocs is a CLI tool that generates HTML documentation from markdown files with theme support. The codebase follows a modular TypeScript architecture:
 
 ### Core Structure
-- **`bin/`** - CLI entry point (`markdown-docs-generator.ts`)
+- **`bin/`** - CLI entry point (`snapdocs.ts`)
 - **`lib/`** - Core library code
   - **`commands/`** - Command implementations (init, setup, update)
   - **`utils/`** - Utility classes (FileManager, PackageModifier, ConflictResolver)
