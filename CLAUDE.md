@@ -27,7 +27,6 @@ node dist/bin/snapdocs.js
 # Or install and use globally
 npm install -g .
 snapdocs --help
-mdg --help             # Short alias
 ```
 
 ## Architecture Overview
@@ -79,7 +78,6 @@ The codebase uses Korean for user-facing messages in command implementations, wh
 ### Binary Distribution
 The package provides two CLI aliases:
 - `snapdocs` - Main command
-- `mdg` - Short alias for "markdown docs generator"
 
 ### File Management Strategy
 - Templates are embedded in the package under `templates/`

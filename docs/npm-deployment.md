@@ -25,7 +25,7 @@ SnapDocs는 마크다운 파일을 아름다운 HTML 문서로 변환하는 CLI 
    - `version`: 1.0.0
    - `description`: 명확한 패키지 설명
    - `main`: dist/lib/index.js (진입점)
-   - `bin`: CLI 명령어 설정 (snapdocs, mdg)
+   - `bin`: CLI 명령어 설정 (snapdocs)
 
 2. **빌드 및 배포 스크립트**
    - `prepare`: npm install 후 자동 빌드
