@@ -4,7 +4,7 @@
   "description": "A CLI tool to generate beautiful HTML documentation from markdown files with theme support",
   "main": "dist/lib/index.js",
   "bin": {
-    "snapdocs": "dist/bin/snapdocs.js",
+    "snapdocs": "dist/bin/snapdocs.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

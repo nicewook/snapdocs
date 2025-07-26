@@ -271,6 +271,34 @@ export class PackageModifier {
     
     return packageData;
   }
+
+  /**
+   * 문서용 최소 package.json 생성 (비 Node.js 프로젝트용)
+   */
+  async createMinimal(): Promise<PackageJson> {
+    const packageData: PackageJson = {
+      name: "docs-system",
+      version: "1.0.0",
+      private: true,
+      description: "Documentation system for this project",
+      scripts: {
+        docs: "node docs/generator/docs-generator.js",
+        "docs:watch": "node docs/generator/docs-generator.js --watch",
+        "docs:dark": "node docs/generator/docs-generator.js --theme dark",
+        "docs:github": "node docs/generator/docs-generator.js --theme github"
+      },
+      devDependencies: {
+        "chokidar": "^4.0.3",
+        "gray-matter": "^4.0.3",
+        "marked": "^16.0.0"
+      }
+    };
+
+    await this.write(packageData);
+    console.log(chalk.green('✅ 문서용 package.json 생성 완료'));
+    
+    return packageData;
+  }
 }
 
 export default PackageModifier;

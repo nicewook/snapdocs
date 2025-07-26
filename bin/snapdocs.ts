@@ -7,9 +7,7 @@ import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 
 // Import commands
-import { initCommand } from '../lib/commands/init';
 import { setupCommand } from '../lib/commands/setup';
-import { updateCommand } from '../lib/commands/update';
 
 // Get package.json for version
 const packageJsonPath = join(dirname(__filename), '../../package.json');
@@ -21,60 +19,26 @@ program
   .description('Generate beautiful HTML documentation from markdown files')
   .version(packageJson.version);
 
-// Init command - Create new project with docs system
-program
-  .command('init')
-  .description('Initialize a new project with markdown documentation system')
-  .option('-t, --theme <theme>', 'Default theme (default, dark, github)', 'default')
-  .option('-f, --force', 'Overwrite existing files')
-  .option('--no-install', 'Skip npm install')
-  .action(async (options) => {
-    try {
-      console.log(chalk.blue('🚀 Initializing markdown documentation system...'));
-      await initCommand(options);
-      console.log(chalk.green('✅ Documentation system initialized successfully!'));
-    } catch (error: any) {
-      console.error(chalk.red('❌ Error during initialization:'), error.message);
-      process.exit(1);
-    }
-  });
 
-// Setup command - Add docs system to existing project
+// Setup command - Install docs system to any project
 program
   .command('setup')
-  .description('Add markdown documentation system to existing project')
+  .description('Install markdown documentation system to any project')
   .option('-t, --theme <theme>', 'Default theme (default, dark, github)', 'default')
   .option('-f, --force', 'Overwrite existing files')
   .option('--no-install', 'Skip npm install')
   .option('--backup', 'Create backup of existing files')
   .action(async (options) => {
     try {
-      console.log(chalk.blue('🔧 Setting up markdown documentation system...'));
+      console.log(chalk.blue('📚 Installing markdown documentation system...'));
       await setupCommand(options);
-      console.log(chalk.green('✅ Documentation system setup complete!'));
+      console.log(chalk.green('✅ Documentation system installed successfully!'));
     } catch (error: any) {
-      console.error(chalk.red('❌ Error during setup:'), error.message);
+      console.error(chalk.red('❌ Error during installation:'), error.message);
       process.exit(1);
     }
   });
 
-// Update command - Update existing docs system
-program
-  .command('update')
-  .description('Update existing markdown documentation system')
-  .option('-t, --theme <theme>', 'Update to specific theme')
-  .option('-f, --force', 'Force update without confirmation')
-  .option('--backup', 'Create backup of existing files')
-  .action(async (options) => {
-    try {
-      console.log(chalk.blue('🔄 Updating markdown documentation system...'));
-      await updateCommand(options);
-      console.log(chalk.green('✅ Documentation system updated successfully!'));
-    } catch (error: any) {
-      console.error(chalk.red('❌ Error during update:'), error.message);
-      process.exit(1);
-    }
-  });
 
 // Help command override
 program
@@ -88,9 +52,7 @@ program
     console.log('  npx snapdocs <command> [options]\n');
     
     console.log(chalk.bold('Commands:'));
-    console.log('  init     Initialize new project with docs system');
-    console.log('  setup    Add docs system to existing project');
-    console.log('  update   Update existing docs system');
+    console.log('  setup    Install documentation system to any project');
     console.log('  help     Show this help message\n');
     
     console.log(chalk.bold('Options:'));
@@ -102,10 +64,10 @@ program
     console.log('  -V, --version        Show version\n');
     
     console.log(chalk.bold('Examples:'));
-    console.log('  npx snapdocs setup');
-    console.log('  npx snapdocs setup --theme dark');
-    console.log('  npx snapdocs init --force');
-    console.log('  npx snapdocs update --backup\n');
+    console.log('  npx snapdocs setup                # Install in any project');
+    console.log('  npx snapdocs setup --backup       # Install/update with backup');
+    console.log('  npx snapdocs setup --theme dark   # Install with dark theme');
+    console.log('  npx snapdocs setup --force        # Force overwrite existing files\n');
     
     console.log(chalk.gray('For more information, visit: https://github.com/nicewook/snapdocs'));
   });

@@ -1,15 +1,9 @@
-import { initCommand } from './commands/init';
 import { setupCommand } from './commands/setup';
-import { updateCommand } from './commands/update';
 
 export {
-  initCommand as init,
-  setupCommand as setup,
-  updateCommand as update
+  setupCommand as setup
 };
 
 export default {
-  init: initCommand,
-  setup: setupCommand,
-  update: updateCommand
+  setup: setupCommand
 };
