@@ -1,195 +1,221 @@
 # SnapDocs
 
-📚 A powerful CLI tool to generate beautiful HTML documentation from markdown files with theme support.
+📚 모든 프로그래밍 언어 프로젝트에 문서화 시스템을 설치하는 범용 CLI 도구입니다. 테마를 지원하는 마크다운 파일로부터 아름다운 HTML 문서를 생성합니다.
 
-## Features
+## ✨ 주요 기능
 
-- 🎨 **Multiple Themes**: Default, Dark, and GitHub themes
-- 📱 **Responsive Design**: Mobile-friendly documentation portal
-- 🔍 **Auto-Discovery**: Automatically finds and categorizes markdown files
-- 🎯 **Front Matter Support**: YAML metadata for custom titles and categories
-- 👀 **Live Watching**: Real-time regeneration when files change
-- 📂 **Flexible Structure**: Works with any project structure
-- 🚀 **Easy Setup**: One command to add to existing projects
-- 🔧 **Configurable**: Customizable via config.json
+- 🌍 **범용 언어 지원**: Go, Java, Python, Node.js 등 모든 프로젝트에서 동작
+- 🎨 **다양한 테마**: 기본, 다크, 깃허브 테마 제공
+- 📱 **반응형 디자인**: 모바일 친화적인 문서 포털
+- 🔍 **자동 탐지**: 마크다운 파일을 자동으로 찾고 분류
+- 🎯 **Front Matter 지원**: 제목과 카테고리를 위한 YAML 메타데이터
+- 👀 **실시간 감시**: 파일 변경 시 실시간 재생성
+- 📂 **스마트 통합**: 기존 프로젝트를 손상시키지 않고 적응
+- 🚀 **단일 명령 설치**: 어디서나 작동하는 하나의 명령
+- 🔧 **설정 가능**: config.json을 통한 사용자 정의
+- 📦 **npm 워크플로**: 모든 언어에서 일관된 `npm run docs`
 
-## Installation
+## 🚀 설치
 
 ```bash
-# Use directly with npx (recommended)
+# npx로 직접 사용 (권장)
 npx snapdocs setup
 
-# Or install globally
+# 또는 전역 설치
 npm install -g snapdocs
 ```
 
-## Quick Start
+## ⚡ 빠른 시작
 
-### Add to Existing Project
+### 모든 프로젝트에 설치
 
 ```bash
-# Navigate to your project
-cd your-project
+# 모든 프로그래밍 언어 프로젝트에서 작동
+cd your-project          # Go, Java, Python, Node.js 등
+npx snapdocs setup      # 범용 설치
+npm run docs            # 문서 생성
+npm run docs:watch      # 실시간 감시 시작
+```
 
-# Setup documentation system
+### 언어별 예제
+
+```bash
+# Go 프로젝트
+cd my-go-microservice/
 npx snapdocs setup
-
-# Generate documentation
 npm run docs
 
-# Start live watching
-npm run docs:watch
+# Java Spring Boot 프로젝트
+cd my-spring-app/
+npx snapdocs setup
+npm run docs
+
+# Python Django 프로젝트
+cd my-django-api/
+npx snapdocs setup
+npm run docs
+
+# Node.js 프로젝트
+cd my-node-app/
+npx snapdocs setup
+npm run docs
 ```
 
-### Create New Project
+## 🎯 작동 원리
 
-```bash
-# Create new directory
-mkdir my-docs-project
-cd my-docs-project
+SnapDocs는 프로젝트에 지능적으로 적응합니다:
 
-# Initialize with documentation system
-npx snapdocs init
+### Node.js 프로젝트에서
+- ✅ 기존 `package.json` 활용
+- ✅ 문서화 스크립트 추가
+- ✅ 필요한 의존성 설치
 
-# Start developing
-npm run docs:watch
-```
+### 비-Node.js 프로젝트에서
+- ✅ 문서 전용 최소 `package.json` 생성
+- ✅ `npm run docs` 워크플로 활성화
+- ✅ 메인 프로젝트와의 간섭 없음
 
-## Usage
+### 스마트 기능
+- 🧠 기존 문서화 시스템 자동 감지
+- 🔄 사용자 정의 설정을 보존하며 구성 업데이트
+- 💾 변경 전 선택적 백업 생성
+- 🎨 테마 선택 및 전환
 
-### Commands
+## 📋 명령어 참조
 
-| Command | Description |
+### 단일 범용 명령
+
+| 명령어 | 설명 |
 |---------|-------------|
-| `setup` | Add documentation system to existing project |
-| `init` | Initialize new project with documentation system |
-| `update` | Update existing documentation system |
-| `help` | Show help information |
+| `setup` | 모든 프로젝트에 문서화 시스템 설치 |
+| `help` | 도움말 정보 표시 |
 
-### Options
+### 옵션
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| `-t, --theme <theme>` | Choose theme: default, dark, github |
-| `-f, --force` | Overwrite existing files |
-| `--no-install` | Skip npm install |
-| `--backup` | Create backup of existing files |
+| `-t, --theme <theme>` | 테마 선택: default, dark, github |
+| `-f, --force` | 기존 파일 덮어쓰기 |
+| `--no-install` | npm install 건너뛰기 |
+| `--backup` | 기존 파일 백업 생성 |
 
-### Examples
+### 예제
 
 ```bash
-# Setup with dark theme
+# 기본 설치
+npx snapdocs setup
+
+# 다크 테마로 설치
 npx snapdocs setup --theme dark
 
-# Force setup (overwrite existing files)
+# 백업과 함께 기존 시스템 업데이트
+npx snapdocs setup --backup
+
+# 강제 재설치
 npx snapdocs setup --force
-
-# Update with backup
-npx snapdocs update --backup
-
-# Initialize new project
-npx snapdocs init --theme github
 ```
 
-## Generated Scripts
+## 📦 생성되는 스크립트
 
-After setup, these scripts will be added to your `package.json`:
+설치 후 **모든** 프로젝트 언어에서 작동하는 스크립트들:
 
 ```json
 {
   "scripts": {
-    "docs": "cd docs/generator && node docs-generator.js",
-    "docs:watch": "cd docs/generator && node docs-generator.js --watch",
-    "docs:dark": "cd docs/generator && node docs-generator.js --theme dark",
-    "docs:github": "cd docs/generator && node docs-generator.js --theme github"
+    "docs": "node docs/generator/docs-generator.js",
+    "docs:watch": "node docs/generator/docs-generator.js --watch",
+    "docs:dark": "node docs/generator/docs-generator.js --theme dark",
+    "docs:github": "node docs/generator/docs-generator.js --theme github"
   }
 }
 ```
 
-## Project Structure
+## 🏗️ 프로젝트 구조
 
-After setup, your project will have this structure:
+설치 후 모든 프로젝트는 다음과 같은 구조를 가집니다:
 
 ```
-your-project/
+your-project/                    # Go, Java, Python, Node.js 등
 ├── docs/
 │   ├── generator/
-│   │   ├── docs-generator.js      # Main generator script
-│   │   ├── config.json           # Configuration file
+│   │   ├── docs-generator.js    # 문서 생성기
+│   │   ├── config.json          # 설정 파일
 │   │   └── styles/
-│   │       ├── default.css       # Default theme
-│   │       ├── dark.css         # Dark theme
-│   │       └── github.css       # GitHub theme
-│   ├── CLAUDE.md                # Documentation guidelines
-│   └── *.md                     # Your documentation files
-├── README.md                    # Project README
-├── index.html                   # Generated documentation
-└── package.json
+│   │       ├── default.css      # 기본 테마
+│   │       ├── dark.css         # 다크 테마
+│   │       └── github.css       # 깃허브 테마
+│   ├── CLAUDE.md                # 문서화 가이드라인
+│   └── *.md                     # 사용자 문서 파일들
+├── package.json                 # 생성되거나 향상됨
+├── index.html                   # 생성된 문서
+└── [프로젝트 파일들]              # 그대로 유지
 ```
 
-## Documentation Format
+## 📝 문서 형식
 
-Create markdown files with front matter for better organization:
+더 나은 구성을 위해 front matter를 포함한 마크다운 파일을 작성하세요:
 
 ```markdown
 ---
-title: Getting Started
-category: overview
+title: API 참조
+category: technical
 created: 2024-01-01T00:00:00Z
 ---
 
-# Getting Started
+# API 참조
 
-Your documentation content here...
+여기에 문서 내용을 작성하세요...
 ```
 
-### Front Matter Fields
+### Front Matter 필드
 
-| Field | Description | Example |
+| 필드 | 설명 | 예제 |
 |-------|-------------|---------|
-| `title` | Document title | `"Getting Started"` |
-| `category` | Category for grouping | `"overview"` |
-| `created` | Creation date | `"2024-01-01T00:00:00Z"` |
+| `title` | 문서 제목 | `"API 참조"` |
+| `category` | 그룹화를 위한 카테고리 | `"technical"` |
+| `created` | 생성 날짜 | `"2024-01-01T00:00:00Z"` |
 
-### Available Categories
+### 사용 가능한 카테고리
 
-- `overview` - Project overviews and introductions
-- `technical` - Technical specifications and API docs
-- `analysis` - Research and analysis documents
-- `planning` - Project plans and roadmaps
-- `misc` - Other documents
+- `overview` - 프로젝트 개요 및 소개
+- `technical` - 기술 사양 및 API 문서
+- `analysis` - 연구 및 분석 문서
+- `planning` - 프로젝트 계획 및 로드맵
+- `misc` - 기타 문서
 
-## Themes
+## 🎨 테마
 
-### Default Theme
-Clean, modern design with light colors and excellent readability.
+### 기본 테마
+밝은 색상과 뛰어난 가독성을 제공하는 깔끔하고 현대적인 디자인입니다.
 
-### Dark Theme
-GitHub-inspired dark theme perfect for developers who prefer dark interfaces.
+### 다크 테마
+다크 인터페이스를 선호하는 개발자를 위한 깃허브에서 영감을 받은 다크 테마입니다.
 
-### GitHub Theme
-Matches GitHub's official styling for familiar documentation experience.
+### 깃허브 테마
+친숙한 문서 경험을 위해 깃허브의 공식 스타일링과 일치합니다.
 
-## Configuration
+## ⚙️ 설정
 
-The `docs/generator/config.json` file controls the generator behavior:
+`docs/generator/config.json` 파일이 생성기 동작을 제어합니다:
 
 ```json
 {
   "theme": "default",
-  "title": "Project Documentation",
-  "subtitle": "Project Documentation",
+  "title": "프로젝트 문서",
+  "subtitle": "프로젝트 문서",
   "outputFile": "index.html",
   "docsDir": "docs",
   "excludeFiles": ["temp.md", "draft.md", "*temp*", "*draft*", "*.bak"],
   "categoryOrder": ["overview", "technical", "analysis", "planning", "misc"],
-  "defaultCategory": "Documentation"
+  "defaultCategory": "문서"
 }
 ```
 
-## Korean Font Support
+## 🌏 다국어 지원
 
-The generator includes optimized Korean typography:
+### 한글 폰트 최적화
+
+최적화된 한글 타이포그래피를 포함합니다:
 
 ```css
 font-family: -apple-system, BlinkMacSystemFont, 
@@ -198,32 +224,32 @@ font-family: -apple-system, BlinkMacSystemFont,
     "Apple Color Emoji", "Segoe UI", Roboto, sans-serif;
 ```
 
-## Live Server Integration
+## 🔧 개발 워크플로
 
-The generated `index.html` works perfectly with VS Code Live Server extension:
+### VS Code Live Server 통합
 
-1. Install [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-2. Run `npm run docs:watch` to start file watching
-3. Right-click `index.html` and select "Open with Live Server"
-4. Edit markdown files and see changes in real-time
+실시간 개발을 위한 완벽한 통합:
 
-## Advanced Usage
+1. [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) 설치
+2. `npm run docs:watch` 실행하여 파일 감시 시작
+3. `index.html`을 우클릭하고 "Open with Live Server" 선택
+4. 마크다운 파일을 편집하고 실시간으로 변경사항 확인
 
-### Custom Themes
+### 커스텀 테마
 
-Create custom themes by adding CSS files to `docs/generator/styles/`:
+CSS 파일을 추가하여 커스텀 테마를 생성하세요:
 
 ```bash
-# Create custom theme
-echo "/* Custom theme */" > docs/generator/styles/custom.css
+# 커스텀 테마 생성
+echo "/* 커스텀 테마 */" > docs/generator/styles/custom.css
 
-# Use custom theme
+# 커스텀 테마 사용
 npm run docs -- --theme custom
 ```
 
-### File Exclusion
+### 파일 제외
 
-Use glob patterns to exclude files:
+glob 패턴을 사용하여 파일을 제외하세요:
 
 ```json
 {
@@ -237,7 +263,7 @@ Use glob patterns to exclude files:
 }
 ```
 
-### Programmatic Usage
+## 🔄 프로그래밍 방식 사용
 
 ```javascript
 const { setup } = require('snapdocs');
@@ -249,69 +275,75 @@ await setup({
 });
 ```
 
-## Troubleshooting
+## 🛠️ 문제 해결
 
-### Common Issues
+### 일반적인 문제
 
-1. **"Cannot find module" errors**: Run `npm install` in your project
-2. **Permission denied**: Run `chmod +x docs/generator/docs-generator.js`
-3. **Files not detected**: Check `excludeFiles` in config.json
-4. **Styles not loading**: Verify theme file exists in `docs/generator/styles/`
+1. **"Cannot find module" 오류**: 프로젝트에서 `npm install` 실행
+2. **Permission denied**: `chmod +x docs/generator/docs-generator.js` 실행
+3. **파일이 감지되지 않음**: config.json의 `excludeFiles` 확인
+4. **스타일이 로드되지 않음**: `docs/generator/styles/`에 테마 파일이 존재하는지 확인
 
-### Debug Mode
+### 디버그 모드
 
-Enable verbose logging:
+상세한 로깅 활성화:
 
 ```bash
 DEBUG=snapdocs npm run docs
 ```
 
-## Requirements
+## 📋 요구사항
 
-- Node.js 14.0.0 or higher
-- npm 6.0.0 or higher
+- **Node.js** 14.0.0 이상 (문서 생성용)
+- **npm** 6.0.0 이상
+- **모든 프로그래밍 언어 프로젝트** (Go, Java, Python, Node.js 등)
 
-## Dependencies
+## 📦 의존성
 
-- `commander` - CLI framework
-- `inquirer` - Interactive prompts
-- `fs-extra` - Enhanced file system operations
-- `handlebars` - Template engine
-- `chalk` - Terminal styling
-- `chokidar` - File watching
-- `gray-matter` - Front matter parsing
-- `marked` - Markdown parsing
+**런타임 의존성:**
+- `commander` - CLI 프레임워크
+- `inquirer` - 대화형 프롬프트
+- `fs-extra` - 향상된 파일 시스템 작업
+- `handlebars` - 템플릿 엔진
+- `chalk` - 터미널 스타일링
 
-## Contributing
+**문서 의존성 (자동 설치):**
+- `chokidar` - 파일 감시
+- `gray-matter` - Front matter 파싱
+- `marked` - 마크다운 파싱
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+## 🤝 기여하기
 
-## License
+1. 리포지토리를 포크하세요
+2. 기능 브랜치를 생성하세요
+3. 변경사항을 적용하세요
+4. 테스트를 추가하세요
+5. 풀 리퀘스트를 제출하세요
 
-MIT License - see LICENSE file for details.
+## 📄 라이센스
 
-## Changelog
+MIT 라이센스 - 자세한 내용은 LICENSE 파일을 참조하세요.
 
-### v1.0.0
-- Initial release
-- Support for multiple themes (default, dark, github)
-- CLI commands: init, setup, update
-- File watching and live regeneration
-- Korean font optimization
-- Responsive design
-- Front matter support
+## 📈 변경로그
 
-## Support
+### v0.1.0
+- 범용 언어 지원 (Go, Java, Python, Node.js 등)
+- 모든 시나리오를 위한 단일 `setup` 명령
+- 스마트 package.json 처리 (최소 생성 또는 기존 향상)
+- 자동 문서화 시스템 감지 및 업데이트
+- 다양한 테마 (기본, 다크, 깃허브)
+- 파일 감시 및 실시간 재생성
+- 한글 폰트 최적화
+- 반응형 디자인
+- Front matter 지원
 
-- 🐛 [Report bugs](https://github.com/nicewook/snapdocs/issues)
-- 💡 [Request features](https://github.com/nicewook/snapdocs/issues)
-- 📖 [Documentation](https://github.com/nicewook/snapdocs)
-- 💬 [Discussions](https://github.com/nicewook/snapdocs/discussions)
+## 💬 지원
+
+- 🐛 [버그 리포트](https://github.com/nicewook/snapdocs/issues)
+- 💡 [기능 요청](https://github.com/nicewook/snapdocs/issues)
+- 📖 [문서](https://github.com/nicewook/snapdocs)
+- 💬 [토론](https://github.com/nicewook/snapdocs/discussions)
 
 ---
 
-Made with ❤️ for developers who love beautiful documentation.
+프로그래밍 언어에 관계없이 아름다운 문서를 사랑하는 개발자들을 위해 ❤️로 만들었습니다.
